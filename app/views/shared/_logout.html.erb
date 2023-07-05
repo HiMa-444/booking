@@ -1,0 +1,6 @@
+<div>
+  <p><%= link_to "login", login_path%> or <%= link_to "sign up", new_user_path%></p>
+  <% if flash[:notice]%>
+    <%= flash[:notice]%>
+  <% end%>
+</div>

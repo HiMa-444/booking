@@ -1,0 +1,34 @@
+<h1>検索ページ</h1>
+<%= form_with url: sarch_path do |s|%>
+  <div id = "address_mode">
+    <button id = "address_b" type = "button">フリーワード検索に切り替え</button>
+    <p>住所<%= s.text_field :address%></p>
+    <select name = "area">
+      <option>エリアを指定</option>
+      <option value = "東京">東京</option>
+      <option value = "大阪">大阪</option>
+      <option value = "京都">京都</option>
+      <option value = "札幌">札幌</option>
+      <option value = "kaga_address">加賀</option>
+    </select>
+  </div>
+  
+  <div id = "free_mode" class = "hide">
+    <button id = "free_b" type = "button">住所検索に切り替え</button>
+    <p>施設名<%= s.text_field :room_name%></p>
+    <p>施設詳細<%= s.text_field :room_detail%></p>
+  </div>
+  <p><%= s.submit "検索"%></p>
+<% end%>
+<script>
+  let address = document.getElementById('address_b');
+  let free = document.getElementById('free_b');
+  address.addEventListener('click', function(){
+    document.getElementById('free_mode').classList.toggle('hide');
+    document.getElementById('address_mode').classList.toggle('hide');
+  }, false)
+  free.addEventListener('click', function(){
+    document.getElementById('free_mode').classList.toggle('hide');
+    document.getElementById('address_mode').classList.toggle('hide');
+  }, false)
+</script>

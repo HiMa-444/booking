@@ -1,0 +1,40 @@
+<% user = login_user%>
+<div>
+  <table>
+    <tr>
+      <th>
+        <% if user.image.attached?%>
+          <%= image_tag user.image, height: 100%>
+        <% else%>
+          <p>no image</p>
+          <%= image_tag 'd-avatar.png', height: 100%>
+        <% end%>
+      </th>
+      <th><h1 id = "user_name"><%= user.name%></h1></th>
+    </tr>
+  </table>
+</div>
+
+<table>
+  <tr>
+    <th>メールアドレス</th>
+    <td><%= user.email%></td>
+  </tr>
+  
+  <tr>
+    <th>パスワード</th>
+    <td>*********</td>
+  </tr>
+</table>
+
+<div id = "dp" class = "hide">
+  <p><%= button_to "ユーザーページ", user_path(user.id), method: :get %></p>
+  <p><%= button_to "プロフィール編集", edit_user_path(user.id), method: :get%></p>
+</div>
+
+<p><%= button_to "logout", logout_path, method: :delete%></p>
+<script>
+  document.getElementById('user_name').addEventListener('click', function(){
+    document.getElementById('dp').classList.toggle('hide');
+  }, false)
+</script>

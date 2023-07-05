@@ -1,0 +1,8 @@
+<h1>ユーザーページ</h1>
+<% if @booking%>
+  <p><%= button_to "予約した施設を確認する", reservations_path, method: :get%></p>
+<% else%>
+  <p>予約をした施設はありません</p>
+<% end%>
+<%= button_to "予約をする", rooms_path, method: :get%>
+<p><%= button_to "戻る", users_path, method: :get%></p>

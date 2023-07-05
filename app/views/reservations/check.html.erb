@@ -1,0 +1,31 @@
+<h1>予約内容の確認</h1>
+<% d = @data%>
+<p>チェックイン日:<%= d.inday.to_s(:tokyo)%></p>
+<p>チェックアウト日:<%= d.outday%></p>
+<p>宿泊人数:<%= d.humans%></p>
+<% period = d.outday - d.inday %>
+<% period = period.to_i%>
+<p id = "period">宿泊日数:<%= period%></p>
+<% pey = @room.room_much * d.humans * period.to_i%>
+<p>支払:<%= pey%>円</p>
+<button id = "back_btn" type = "button">予約内容の変更</button>
+
+<%= form_with model: Reservation.new do |r|%>
+  <p><%= r.hidden_field :user_id , value: login_user.id%></p>
+  <p><%= r.hidden_field :inday, value: d.inday%></p>
+  <p><%= r.hidden_field :outday, value: d.outday%></p>
+  <p><%= r.hidden_field :humanss, value: d.humans%></p>
+  <p><%= r.hidden_field :period, value: period%></p>
+  <p><%= r.hidden_field :pey, value: pey%></p>
+  <p><%= r.hidden_field :room_id, value: @room.id%></p>
+  <p><%= r.submit "予約を完了する"%></p>
+<% end%>
+<script>
+  document.getElementById('back_btn').addEventListener('click', function(){
+    history.back();
+  }, false)
+  num = document.getElementById('period');
+  if (num.innerHTML.slice(5) < 1) {
+    history.back();
+  }
+</script>

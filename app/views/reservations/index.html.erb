@@ -1,0 +1,12 @@
+<h2>予約の合計:<%= @booking.length%>件</h2>
+<p><%= button_to "戻る", user_path(login_user.id), method: :get%></p>
+<% @booking.each do |f|%>
+  <% r = Room.find(f.room_id)%>
+  <p><%= image_tag r.room_image, height: 45%></p>
+  <p>施設名:<%= r.room_name%></p>
+  <p>施設紹介<%= r.room_introduce%></p>
+  <p>料金/日:<%= f.pey%></p>
+  <p>チェックイン日<%= f.inday%></p>
+  <p>チェックアウト日<%= f.outday%></p>
+  <p>予約確定日:<%= f.created_at.to_s(:tokyo_long)%></p>
+<% end%>
