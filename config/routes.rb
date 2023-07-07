@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   resources :users
+  get 'top', to: 'users#top'
   patch '/users/:id', to: 'users#update'
   resources :rooms
   resources :reservations do
@@ -14,6 +15,6 @@ Rails.application.routes.draw do
     get 'check', to: 'reservations#check'
     end
   end
-  root to: "users#index"
+  root to: "users#top"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

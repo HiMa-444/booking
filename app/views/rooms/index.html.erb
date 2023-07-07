@@ -1,31 +1,37 @@
 <h1>施設一覧</h1>
-<table>
-  <thead>
-    <th>施設画像</th>
-    <th>施設名</th>
-    <th>施設紹介</th>
-    <th>料金/日</th>
-    <th>作成日</th>
-  </thead>
-  
-  <tbody>
-    <% @rooms.each do |r|%>
-      <tr class = "tr">
-        <td>
-          <% if r.room_image.attached?%>
-            <%= image_tag r.room_image, height: 45%>
-          <% else%>
-            <%= image_tag 'd-image.png', height: 45%>
-          <% end%>
-        </td>
-        <td><%= link_to r.room_name, room_path(r.id)%></td>
-        <td><%= r.room_introduce%></td>
-        <td><%= r.room_much%></td>
-        <td><%= r.created_at.to_s(:tokyo)%></td>
-      </tr>
-    <%end%>
-  </tbody>
-</table>
-<p><%= button_to "施設検索", sarch_path, method: :get%></p>
-<p><%= button_to "施設登録", new_room_path, method: :get%></p>
-<p><%= button_to "戻る", user_path(login_user.id), method: :get%></p>
+<div class = "room_page">
+  <table>
+    <thead>
+      <th>施設画像</th>
+      <th>施設名</th>
+      <th>施設紹介</th>
+      <th>料金/日</th>
+      <th>作成日</th>
+    </thead>
+    
+    <tbody>
+      <% @rooms.each do |r|%>
+        <div>
+          <tr>
+            <td>
+              <% if r.room_image.attached?%>
+                <%= image_tag r.room_image, height: 45%>
+              <% else%>
+                <%= image_tag 'd-image.png', height: 45%>
+              <% end%>
+            </td>
+            <td><%= link_to r.room_name, room_path(r.id)%></td>
+            <td><%= r.room_introduce%></td>
+            <td><%= r.room_much%></td>
+            <td><%= r.created_at.to_s(:tokyo)%></td>
+          </tr>
+        </div>
+      <%end%>
+    </tbody>
+  </table>
+  <div class ="submit_buttons">
+    <%= button_to "施設検索", sarch_path, method: :get%>
+    <%= button_to "施設登録", new_room_path, method: :get%>
+    <%= button_to "戻る", user_path(login_user.id), method: :get%>
+  </div>
+</div>

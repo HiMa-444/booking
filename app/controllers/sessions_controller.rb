@@ -6,10 +6,8 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
     if user&.authenticate(params[:password])
       login(user) 
-      flash[:notice] = "ログインしました"
       redirect_to users_path
     else
-      flash[:notice] = "ログイン失敗"
       render 'new'
     end
   end
@@ -17,6 +15,6 @@ class SessionsController < ApplicationController
   def destroy
     logout
     flash[:notice] = "ログアウトしました"
-    redirect_to users_path
+    redirect_to top_path
   end
 end

@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  def top
+  end
+  
   def index
     @users = User.all
     @room = Room.all
@@ -10,12 +13,10 @@ class UsersController < ApplicationController
   def create
     user = User.new(params.require(:user).permit(:image, :name, :email, :password, :password_confirmation, :introduce))
     if user.save
-      flash[:notice] = "登録完了"
       login(user)
-      redirect_to users_path
+      redirect_to top_path
     else
-      flash[:no] = "内容に不備があり"
-      render new_user_path
+      render new
     end
   end
   

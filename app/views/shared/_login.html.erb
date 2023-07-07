@@ -1,40 +1,40 @@
 <% user = login_user%>
-<div>
+<header class = "login_header">
+  <div>
+    <% if user.image.attached?%>
+      <%= image_tag user.image, height: 100%>
+    <% else%>
+      <%= image_tag 'd-avatar.png', height: 100%>
+    <% end%>
+  </div>
+  <div class = "name_header">
+    <h3>Name:</h3>
+    <h1 id = "user_name"><%= user.name%></h1>
+  </div>
+</header>
+
+<div id = "user_menu" class = "hide">
+  <%= button_to "ユーザーページ", user_path(user.id), method: :get %>
+  <%= button_to "プロフィール編集", edit_user_path(user.id), method: :get%>
+</div>
+<div id = "datas">
   <table>
     <tr>
-      <th>
-        <% if user.image.attached?%>
-          <%= image_tag user.image, height: 100%>
-        <% else%>
-          <p>no image</p>
-          <%= image_tag 'd-avatar.png', height: 100%>
-        <% end%>
-      </th>
-      <th><h1 id = "user_name"><%= user.name%></h1></th>
+      <th>メールアドレス</th>
+      <td><%= user.email%></td>
+    </tr>
+    
+    <tr>
+      <th>パスワード</th>
+      <td>*********</td>
     </tr>
   </table>
+  <p><%= button_to "logout", logout_path, method: :delete%></p>
 </div>
-
-<table>
-  <tr>
-    <th>メールアドレス</th>
-    <td><%= user.email%></td>
-  </tr>
-  
-  <tr>
-    <th>パスワード</th>
-    <td>*********</td>
-  </tr>
-</table>
-
-<div id = "dp" class = "hide">
-  <p><%= button_to "ユーザーページ", user_path(user.id), method: :get %></p>
-  <p><%= button_to "プロフィール編集", edit_user_path(user.id), method: :get%></p>
-</div>
-
-<p><%= button_to "logout", logout_path, method: :delete%></p>
 <script>
   document.getElementById('user_name').addEventListener('click', function(){
-    document.getElementById('dp').classList.toggle('hide');
+    document.getElementById('user_menu').classList.toggle('hide');
+    document.getElementById('user_menu').classList.toggle('show');
+    document.getElementById('datas').classList.toggle('datas');
   }, false)
 </script>

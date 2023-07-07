@@ -18,9 +18,13 @@
     <p>施設名<%= s.text_field :room_name%></p>
     <p>施設詳細<%= s.text_field :room_detail%></p>
   </div>
-  <p><%= s.submit "検索"%></p>
+  <%= s.submit "検索"%>
+  <button id = "back" type = "button">戻る</button>
 <% end%>
 <script>
+  document.getElementById('back').addEventListener('click', function(){
+    history.back();
+  }, false)
   let address = document.getElementById('address_b');
   let free = document.getElementById('free_b');
   address.addEventListener('click', function(){
