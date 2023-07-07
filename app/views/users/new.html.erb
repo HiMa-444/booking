@@ -1,8 +1,5 @@
 <h1>新規登録</h1>
 <h3>*は必須項目です</h3>
-<% if flash[:no]%>
-  <%= flash[:no]%>
-<% end%>
 <%= form_with model: User.new do |f|%>
   <table>
     <tr>

@@ -1,4 +1,5 @@
 <h1>ユーザーページ</h1>
+<h2>ログインユーザー:<%= @user.name%></h2>
 <% if @booking%>
   <p><%= button_to "予約した施設を確認する", reservations_path, method: :get%></p>
 <% else%>

@@ -1,24 +1,22 @@
 <h1>編集</h1>
-<% if flash[:noup]%>
-  <%= flash[:noup]%>
-<% end%>
-<%= form_with model: @user do |u|%>
-<table>
-  <tr>
-    <th><%= u.label :image, "プロフィール画像"%></th>
-    <td><%= u.file_field :image%></td>
-  </tr>
-  
-  <tr>
-    <th><%= u.label :name, "名前"%></th>
-    <td><%= u.text_field :name%></td>
-  </tr>
-  
-  <tr>
-    <th><%= u.label :introduce, "自己紹介"%></th>
-    <td><%= u.text_field :introduce%></td>
-  </tr>
-</table>
-<p><%= u.submit "変更を保存"%></p>
-<button><%=link_to "戻る", users_path%></button>
+<%= form_with model: User.find(params[:id]),　url: user_path(params[:id]), method: :patch do |u|%>
+  <table>
+    <tr>
+      <th><%= u.label :image, "プロフィール画像"%></th>
+      <td><%= u.file_field :image, value: login_user.image%></td>
+    </tr>
+    
+    <tr>
+      <th><%= u.label :name, "名前"%></th>
+      <td><%= u.text_field :name, value: login_user.name%></td>
+    </tr>
+    
+    <tr>
+      <th><%= u.label :introduce, "自己紹介"%></th>
+      <td><%= u.text_field :introduce, value: login_user.introduce%></td>
+    </tr>
+    <%= u.hidden_field :password, value: login_user.password_digest%>
+  </table>
+  <p><%= u.submit "変更を保存"%></p>
+  <button><%=link_to "戻る", users_path%></button>
 <% end%>

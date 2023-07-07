@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
   def index
-    @booking = Reservation.all
+    @booking = User.find_by(id: login_user.id).reservations
   end
 
   def new

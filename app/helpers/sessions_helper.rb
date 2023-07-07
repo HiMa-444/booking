@@ -9,20 +9,11 @@ module SessionsHelper
   
   def logout
     session.delete(:user_id)
-    login_now = nil
+    login_user = nil
   end
   
   def login_now
     !login_user.nil?
-  end
-  
-  def image_check
-    if login_user.image.attached?
-      login_user.image.purge
-      params.require(:user).permit(:image, :name, :introduce)
-    else
-      params.require(:user).permit(:image, :name, :introduce)
-    end
   end
   
   def before_page
