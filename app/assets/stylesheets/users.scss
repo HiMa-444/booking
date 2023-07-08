@@ -31,14 +31,14 @@
   display: flex;
   align-items: center;
 }
-.show {
-  position: relative;
-  left: 350px;
-  bottom: 35px;
+.user_name {
+  //position: absolute;
 }
-.datas {
-  position: relative;
-  bottom: 52px;
+ul.list> li {
+  display: none;
+}
+ul.list:hover> li {
+  display: block;
 }
 .login_datas {
   border: 1px gray;

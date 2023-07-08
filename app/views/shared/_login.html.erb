@@ -8,16 +8,16 @@
     <% end%>
   </div>
   <div class = "name_header">
-    <h3>Name:</h3>
-    <h1 id = "user_name"><%= user.name%></h1>
+    <ul class = "list"><h1 id = "user_name"><%= user.name%></h1>
+      <li><%= button_to "ユーザーページ", user_path(user.id), method: :get %></li>
+      <li><%= button_to "アカウント情報の編集", account_edit_user_path(user.id), method: :get%></li>
+      <li><%= button_to "プロフィール編集", edit_user_path(user.id), method: :get%></li>
+    </ul>
   </div>
 </header>
 
-<div id = "user_menu" class = "hide">
-  <%= button_to "ユーザーページ", user_path(user.id), method: :get %>
-  <%= button_to "プロフィール編集", edit_user_path(user.id), method: :get%>
-</div>
-<div id = "datas">
+
+<div>
   <table>
     <tr>
       <th>メールアドレス</th>
@@ -33,8 +33,5 @@
 </div>
 <script>
   document.getElementById('user_name').addEventListener('click', function(){
-    document.getElementById('user_menu').classList.toggle('hide');
-    document.getElementById('user_menu').classList.toggle('show');
-    document.getElementById('datas').classList.toggle('datas');
   }, false)
 </script>

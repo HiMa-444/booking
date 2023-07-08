@@ -42,6 +42,19 @@ class UsersController < ApplicationController
     end
   end
   
+  def account_edit
+  end
+  
+  def account_update
+    user = User.find(params[:id])
+    if user.authenticate(params[:user][:old])
+      if user.update(params.require(:user).permit(:email, :password))
+        redirect_to users_path
+      end
+    else
+      render 'account_edit'
+    end
+  end
   def destroy
     
   end

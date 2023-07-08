@@ -12,7 +12,7 @@
         </th>
         
         <th>
-          <% if r.room_image%>
+          <% if r.room_image.attached?%>
             <%= image_tag r.room_image, height: 160%>
           <% else%>
             <%= image_tag 'd-image.png', height: 160%>

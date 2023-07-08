@@ -1,10 +1,7 @@
 <h1>施設登録</h1>
 <div class = "form_page">
   <p class = "attention">*は必須項目です</p>
-  <% if flash[:nocre]%>
-    <%= flash[:nocre]%>
-  <% end%>
-  <%= form_with model: @room do |r|%>
+  <%= form_with model: Room.new do |r|%>
     <div class = "form">
       <table>
         <tr>
@@ -14,12 +11,12 @@
         
         <tr>
           <th class = "need_form"><%= r.label :room_name, "*施設名"%></th>
-          <td><%= r.text_field :room_name%></td>
+          <td><%= r.text_field :room_name, required: true%></td>
         </tr>
         
         <tr>
           <th class = "need_form"><%= r.label :room_detail, "*施設詳細"%></th>
-          <td><%= r.text_field :room_detail%></td>
+          <td><%= r.text_field :room_detail, required: true%></td>
         </tr>
         
         <tr>
@@ -29,12 +26,12 @@
         
         <tr>
           <th class = "need_form"><%= r.label :room_much, "*料金/日"%></th>
-          <td><%= r.text_field :room_much%></td>
+          <td><%= r.text_field :room_much, required: true%></td>
         </tr>
         
         <tr>
           <th class = "need_form"><%= r.label :address, "*住所"%></th>
-          <td><%= r.text_field :address%></td>
+          <td><%= r.text_field :address, required: true%></td>
         </tr>
       </table>
     </div>

@@ -1,0 +1,30 @@
+<h1>アカウント情報編集ページ</h1>
+<div class = "form_page">
+  <%= form_with model: User.find(login_user.id), url: account_update_user_path(login_user.id) do |f|%>
+  <table class = "form">
+    <tr>
+      <th><%= f.label :email, "メールアドレス"%></th>
+      <td><%= f.text_field :email, value: login_user.email%></td>
+    </tr>
+    
+    <tr>
+      <th><%= f.label :password, "新しいパスワード"%></th>
+      <td><%= f.text_field :password%></td>
+    </tr>
+    
+    <tr>
+      <th><%= f.label :old, "現在のパスワード"%></th>
+      <td><%= f.password_field :old%></td>
+    </tr>
+  </table>
+  <div class = "submit_buttons">
+    <%= f.submit "変更する", class: "submit_buttons_child"%>
+    <button id = "back" class = "submit_buttons_child" type = "button">戻る</button>
+  </div>
+  <% end%>
+</div>
+<script>
+  document.getElementById('back').addEventListener('click', function(){
+    history.back();
+  }, false)
+</script>

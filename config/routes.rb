@@ -5,7 +5,12 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
-  resources :users
+  resources :users do
+    member do
+      get 'account_edit', to: 'users#account_edit'
+      patch 'account_update', to: 'users#account_update'
+    end
+  end
   get 'top', to: 'users#top'
   patch '/users/:id', to: 'users#update'
   resources :rooms
