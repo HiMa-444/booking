@@ -1,0 +1,16 @@
+<div class = "booking_page">
+  <p class = "booking_count">予約の合計:<%= @booking.length%>件</p>
+  <%= button_to "戻る", user_path(login_user.id), method: :get%>
+</div>
+<% @booking.each do |f|%>
+  <div class = "booking_list">
+    <% r = Room.find(f.room_id)%>
+    <p class = "booking_list_child"><%= image_tag r.room_image, height: 45%></p>
+    <p class = "booking_list_child">施設名:<%= r.room_name%></p>
+    <p class = "booking_list_child">施設紹介<%= r.room_introduce%></p>
+    <p class = "booking_list_child">料金/日:<%= f.pey%></p>
+    <p class = "booking_list_child">チェックイン日<%= f.inday%></p>
+    <p class = "booking_list_child">チェックアウト日<%= f.outday%></p>
+    <p class = "booking_list_child">予約確定日:<%= f.created_at.to_s(:tokyo_long)%></p>
+  </div>
+<% end%>

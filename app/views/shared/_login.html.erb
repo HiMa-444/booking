@@ -1,0 +1,37 @@
+<% user = login_user%>
+<header class = "login_header">
+  <div>
+    <% if user.image.attached?%>
+      <%= image_tag user.image, height: 100%>
+    <% else%>
+      <%= image_tag 'd-avatar.png', height: 100%>
+    <% end%>
+  </div>
+  <div class = "name_header">
+    <ul class = "list"><h1 id = "user_name"><%= user.name%></h1>
+      <li><%= button_to "ユーザーページ", user_path(user.id), method: :get %></li>
+      <li><%= button_to "アカウント情報の編集", account_edit_user_path(user.id), method: :get%></li>
+      <li><%= button_to "プロフィール編集", edit_user_path(user.id), method: :get%></li>
+    </ul>
+  </div>
+</header>
+
+
+<div>
+  <table>
+    <tr>
+      <th>メールアドレス</th>
+      <td><%= user.email%></td>
+    </tr>
+    
+    <tr>
+      <th>パスワード</th>
+      <td>*********</td>
+    </tr>
+  </table>
+  <p><%= button_to "logout", logout_path, method: :delete%></p>
+</div>
+<script>
+  document.getElementById('user_name').addEventListener('click', function(){
+  }, false)
+</script>

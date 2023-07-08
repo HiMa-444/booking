@@ -1,0 +1,52 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.header {
+  background-color: orange;
+  display: flex;
+  justify-content: center;
+}
+.link_btn {
+  font-size: 20px;
+  color: black;
+  text-decoration: none;
+}
+.user_buttons {
+  width: 500px;
+}
+.user_buttons_child {
+  width: 200px;
+}
+.booking_count_text {
+  font-size: 16px;
+}
+.login_header {
+  width: 500px;
+  background-color: orange;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.name_header {
+  display: flex;
+  align-items: center;
+}
+.user_name {
+  //position: absolute;
+}
+ul.list> li {
+  display: none;
+}
+ul.list:hover> li {
+  display: block;
+}
+.login_datas {
+  border: 1px gray;
+}
+//top
+.top_background_img {
+  height: 500px;
+  background-image: url(d-image.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}

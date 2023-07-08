@@ -1,0 +1,16 @@
+<h1>Login</h1>
+<%= form_with url: login_path do |f|%>
+  <table>
+    <tr>
+      <th><%= f.label :email, "メールアドレス"%></th>
+      <td><%= f.text_field :email%></td>
+    </tr>
+    
+    <tr>
+      <th><%= f.label :password, "パスワード"%></th>
+      <td><%= f.password_field :password%></td>
+    </tr>
+  </table>
+  <p><%= f.submit "ログイン"%></p>
+  <p><%= link_to "戻る", users_path%></p>
+<% end%>

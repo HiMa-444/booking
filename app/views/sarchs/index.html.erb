@@ -1,0 +1,29 @@
+<h1>検索結果</h1>
+<% unless @room.nil?%>
+  <% @room.each do |r|%>
+    <table>
+      <tr>
+        <th>
+          <p>該当件数:<%= @room.length%>件</p>
+          <p>施設名:<%= link_to r.room_name, room_path(r.id)%></p>
+          <p>住所:<%= r.address%></p>
+          <p>施設詳細:<%= r.room_detail%></p>
+          <p>料金/日:<%= r.room_much%></p>
+        </th>
+        
+        <th>
+          <% if r.room_image.attached?%>
+            <%= image_tag r.room_image, height: 160%>
+          <% else%>
+            <%= image_tag 'd-image.png', height: 160%>
+          <% end%>
+        </th>
+      </tr>
+    </table>
+    
+  <% end%>
+<% else%>
+  <p>該当する項目はありませんでした</p>
+<% end%>
+<p><%= button_to "再検索", sarch_path, method: :get%></p>
+<p><%= button_to "rooms", rooms_path, method: :get%></p>

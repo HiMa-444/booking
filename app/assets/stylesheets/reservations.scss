@@ -1,0 +1,20 @@
+// Place all the styles related to the Reservations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.booking_page {
+  width: 400px;
+  display: flex;
+  alich-items: center;
+  justify-content: space-around;
+}
+.booking_count {
+  margin: 0;
+}
+.booking_list {
+  width: 400px;
+  border: 1px solid gray;
+}
+.booking_list_child {
+  display: flex;
+  justify-content: center;
+}

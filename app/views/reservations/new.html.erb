@@ -1,0 +1,21 @@
+<h1>予約ページ</h1>
+<% if flash[:nocere]%>
+  <%= flash[:nocere]%>
+<% end%>
+<% room = Room.find(session[:room_id])%>
+<p><%= image_tag room.room_image, height:45%></p>
+<p><%= room.room_name%></p>
+<%= form_with model: @data, url: check_reservation_path, method: :get do |d|%>
+  <table>
+    <p>チェックイン日:<%= d.date_field :inday, required: true%></p>
+    <p>チェックアウト日:<%= d.date_field :outday, required: true%></p>
+    <p>人数:<%= d.number_field :humans, min: 1, required: true%></p>
+  </table>
+  <p><%= d.submit "登録内容の確認"%></p>
+  <button id = "back_btn" type = "button">予約のキャンセル</button>
+<% end%>
+<script>
+  document.getElementById('back_btn').addEventListener('click', function(){
+    history.back();
+  }, false)
+</script>
